@@ -1,5 +1,22 @@
 # EcoVoz Urbana, aplicación de prueba
 
+> [!IMPORTANT]
+> **Aviso académico y de no vinculación institucional**
+>
+> EcoVoz Urbana es un trabajo práctico realizado por el Grupo C para el
+> Taller de Diseño de Aplicaciones de la Maestría en Transformación Digital
+> de UNNOBA y UNLP. No es una aplicación oficial ni tiene vinculación
+> institucional, contractual, técnica u operativa con la Municipalidad de
+> La Plata, sus dependencias o sus autoridades. El municipio no encargó,
+> financió, validó, aprobó ni patrocinó este prototipo.
+>
+> El caso, los reportes, las personas, los estados, las respuestas y las
+> actuaciones representadas son ficticios y se utilizan únicamente con
+> fines académicos y de demostración. Las fotografías son recursos visuales
+> de prueba y no deben interpretarse como evidencia de una actuación
+> municipal real. Esta aplicación no debe utilizarse para efectuar reportes
+> reales ni para solicitar asistencia ante una emergencia.
+
 Prototipo académico del programa piloto de observaciones ambientales
 de City Bell. Es una aplicación web solo frontend. La lógica corre en
 el navegador y los datos se guardan en el almacenamiento local del
@@ -58,3 +75,18 @@ fines académicos y de demostración.
 Las fotografías incluidas en este repositorio no conservan metadatos
 EXIF ni coordenadas GPS. La ubicación del caso de prueba se obtiene de
 los datos embebidos en la aplicación.
+
+## Licencia y ausencia de garantías
+
+Salvo que se indique lo contrario, el contenido completo de este
+repositorio, incluido su código, se publica bajo la licencia
+[Creative Commons Atribución-NoComercial 4.0 Internacional][cc-by-nc].
+La atribución debe identificar al Grupo C, Taller de Diseño de
+Aplicaciones, Maestría en Transformación Digital, UNNOBA y UNLP, 2026.
+
+El material se ofrece «tal cual», sin garantías de ningún tipo. No se
+garantizan su exactitud, disponibilidad, adecuación para un propósito
+determinado ni ausencia de errores. Véase el archivo [LICENSE](LICENSE)
+para conocer el alcance del aviso y el texto legal aplicable.
+
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/deed.es
