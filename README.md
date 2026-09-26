@@ -9,6 +9,10 @@ No requiere cuenta ni autenticación. Permite registrar una observación,
 obtener un Código Único de Seguimiento (CUS), consultar su estado y
 recorrer los casos de prueba definidos para el piloto.
 
+La versión publicada se puede recorrer en:
+
+<https://pacu.github.io/ecovoz-urbana-piloto/>
+
 ## Cómo ejecutarla
 
 Se recomienda servir la carpeta con un servidor HTTP local para que el
@@ -50,3 +54,7 @@ de datos compartida, autenticación interna ni integraciones reales.
 La pantalla «Modo prueba» permite simular una falla de conexión y
 acelerar el recorrido de gestión. Los datos incluidos se usan solo con
 fines académicos y de demostración.
+
+Las fotografías incluidas en este repositorio no conservan metadatos
+EXIF ni coordenadas GPS. La ubicación del caso de prueba se obtiene de
+los datos embebidos en la aplicación.
