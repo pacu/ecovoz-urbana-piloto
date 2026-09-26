@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EcoVoz Urbana</title>
+<meta name="theme-color" content="#008290">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="telefono">
+
+  <!-- Inicio -->
+  <section class="pantalla" id="p-inicio" data-fondo="gris">
+    <header class="encabezado">
+      <div>
+        <div class="titulo">EcoVoz Urbana</div>
+        <div class="subtitulo">Municipalidad de La Plata</div>
+      </div>
+    </header>
+    <main class="contenido">
+      <div>
+        <h1 class="grande">¿Qué necesitás hacer?</h1>
+        <p class="ayuda" style="margin: 4px 0 0;">Piloto de observaciones ambientales de City Bell. No necesitás una cuenta.</p>
+      </div>
+      <button class="tarjeta-accion tarjeta-primaria" id="btn-reportar">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        <span><span class="t">Reportar una observación</span><span class="s">Registrá una situación ambiental y obtené un código de seguimiento.</span></span>
+      </button>
+      <button class="tarjeta-accion tarjeta-secundaria" id="btn-consultar">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#008290" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <span><span class="t">Consultar por código</span><span class="s">Ingresá tu código para conocer el estado y el historial.</span></span>
+      </button>
+      <button class="tarjeta-accion tarjeta-secundaria" id="btn-mis-observaciones">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#008290" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
+        <span><span class="t">Mis observaciones</span><span class="s">Las que reportaste desde este teléfono.</span></span>
+      </button>
+      <div class="aviso aviso-error" style="margin-top: auto; flex-direction: column; gap: 12px;">
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e2574c" stroke-width="2" stroke-linecap="round"><path d="M12 3l10 18H2L12 3z"></path><path d="M12 10v4M12 18h.01"></path></svg>
+          <div>
+            <div style="font-size: 16px; font-weight: 700;">¿Hay una emergencia?</div>
+            <div style="color: #111827;">EcoVoz no es un canal de emergencias. Llamá ahora:</div>
+          </div>
+        </div>
+        <a class="btn btn-peligro" href="tel:911" style="width: 100%; justify-content: flex-start; gap: 12px; text-decoration: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg>
+          <span style="flex: 1; text-align: left;">Emergencias</span><strong>911</strong></a>
+        <a class="btn btn-peligro" href="tel:103" style="width: 100%; justify-content: flex-start; gap: 12px; text-decoration: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg>
+          <span style="flex: 1; text-align: left;">Defensa Civil</span><strong>103</strong></a>
+      </div>
+      <div style="display: flex; justify-content: center; padding-bottom: 8px;">
+        <button class="btn" id="btn-modo-prueba" style="background: none; color: var(--texto-2); text-decoration: underline; font-size: 14px;">Modo prueba</button>
+      </div>
+    </main>
+  </section>
+
+  <!-- Paso 1: tipo y peligro -->
+  <section class="pantalla" id="p-paso1">
+    <header class="encabezado"><div class="titulo">EcoVoz Urbana</div></header>
+    <div class="paso-indicador">
+      <div class="fila"><span>Paso 1 de 4 · Tipo de observación</span><span>25 %</span></div>
+      <div class="barra"><div style="width: 25%;"></div></div>
+    </div>
+    <main class="contenido">
+      <h1>Reportar una observación</h1>
+      <div class="aviso aviso-error">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e2574c" stroke-width="2" stroke-linecap="round"><path d="M12 3l10 18H2L12 3z"></path><path d="M12 10v4M12 18h.01"></path></svg>
+        <span style="color: #111827;">EcoVoz no es un canal de emergencias.</span>
+      </div>
+      <div class="campo-grupo">
+        <label for="campo-tipo">¿Qué querés reportar? *</label>
+        <select id="campo-tipo"></select>
+        <div class="ayuda">Elegí el tipo que mejor describa lo que viste.</div>
+      </div>
+      <div class="campo-grupo" role="radiogroup" aria-labelledby="rot-peligro">
+        <div class="rotulo" id="rot-peligro">¿Existe peligro inmediato para personas o bienes? *</div>
+        <div class="ayuda">Por ejemplo: un incendio activo, un cable caído o una inundación en curso.</div>
+        <div style="display: flex; gap: 10px;">
+          <button class="opcion" style="flex: 1;" role="radio" aria-checked="false" data-peligro="si"><span class="punto"></span>Sí</button>
+          <button class="opcion" style="flex: 1;" role="radio" aria-checked="true" data-peligro="no"><span class="punto"></span>No</button>
+        </div>
+        <div class="ayuda">Si elegís «Sí», te mostramos los canales de emergencia y no se crea la observación.</div>
+      </div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" id="btn-p1-cancelar">Cancelar</button>
+      <button class="btn btn-primario" id="btn-p1-continuar">Continuar</button>
+    </footer>
+  </section>
+
+  <!-- Paso 2: descripción y fotos -->
+  <section class="pantalla" id="p-paso2">
+    <header class="encabezado">
+      <div class="titulo">EcoVoz Urbana</div>
+      <button class="accion" data-cancelar>Cancelar</button>
+    </header>
+    <div class="paso-indicador">
+      <div class="fila"><span>Paso 2 de 4 · Descripción y fotos</span><span>50 %</span></div>
+      <div class="barra"><div style="width: 50%;"></div></div>
+    </div>
+    <main class="contenido">
+      <div class="campo-grupo">
+        <h1>Contanos qué observaste</h1>
+        <span class="chip" id="chip-tipo-p2"></span>
+      </div>
+      <div class="campo-grupo">
+        <label for="campo-descripcion">¿Qué sucede? *</label>
+        <textarea id="campo-descripcion" maxlength="500" placeholder="Descripción"></textarea>
+        <div class="mensaje-error oculto" id="error-descripcion">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2574c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+          <span id="texto-error-descripcion">La descripción es obligatoria. Contanos qué sucede para que la delegación pueda actuar.</span>
+        </div>
+        <div class="contador"><span>Al menos 20 caracteres. Agregá referencias del lugar.</span><span id="contador-descripcion">0/500</span></div>
+      </div>
+      <div class="campo-grupo">
+        <div style="font-size: 18px; font-weight: 500;">Fotografías (opcional)</div>
+        <div class="ayuda">Hasta 3 fotos de 10 MB cada una. También podés continuar sin fotos.</div>
+        <div class="grilla-fotos" id="grilla-fotos"></div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-secundario" id="btn-camara" style="flex: 1; font-size: 14px;" title="No disponible en el prototipo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3l2-3h6l2 3h3v12H4z"></path><circle cx="12" cy="13" r="3"></circle></svg>Tomar una foto</button>
+          <button class="btn btn-secundario" id="btn-galeria" style="flex: 1; font-size: 14px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 15l5-4 4 3 3-2 6 4"></path></svg>Elegir de la galería</button>
+        </div>
+        <div class="ayuda oculto" id="nota-camara">La cámara no está disponible en el prototipo; usá la galería.</div>
+      </div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" data-atras>Atrás</button>
+      <button class="btn btn-primario" id="btn-p2-continuar">Continuar</button>
+    </footer>
+  </section>
+
+  <!-- Paso 3: ubicación -->
+  <section class="pantalla" id="p-paso3">
+    <header class="encabezado">
+      <div class="titulo">EcoVoz Urbana</div>
+      <button class="accion" data-cancelar>Cancelar</button>
+    </header>
+    <div class="paso-indicador">
+      <div class="fila"><span>Paso 3 de 4 · Ubicación</span><span>75 %</span></div>
+      <div class="barra"><div style="width: 75%;"></div></div>
+    </div>
+    <main class="contenido">
+      <div class="campo-grupo">
+        <h1>Ubicá la observación</h1>
+        <span class="chip" id="chip-tipo-p3"></span>
+      </div>
+      <div class="aviso aviso-info" id="aviso-pin-propuesto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5fa9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3l2-3h6l2 3h3v12H4z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+        <span id="texto-pin-propuesto">Ubicación propuesta desde la fotografía. Revisá el pin y confirmalo.</span>
+      </div>
+      <div class="mensaje-error oculto" id="error-pin">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2574c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        <span id="texto-error-pin">Revisá y confirmá el pin para continuar.</span>
+      </div>
+      <div class="mapa">
+        <svg viewBox="0 0 350 236" aria-label="Mapa esquemático de la esquina de Calle 465 y Calle 132 Bis">
+          <rect width="350" height="236" fill="#eef2ea"></rect>
+          <g stroke="#ffffff" stroke-width="22"><path d="M0 128H350"></path><path d="M188 0V236"></path></g>
+          <g stroke="#d1d5db" stroke-width="1"><path d="M0 128H350"></path><path d="M188 0V236"></path></g>
+          <g stroke="#ffffff" stroke-width="10"><path d="M0 40H350"></path><path d="M0 214H350"></path><path d="M80 0V236"></path><path d="M300 0V236"></path></g>
+          <text x="8" y="123" font-size="12" font-weight="500" fill="#4b5563">Calle 132 Bis</text>
+          <text x="196" y="24" font-size="12" font-weight="500" fill="#4b5563">Calle 465</text>
+          <circle cx="188" cy="128" r="22" fill="#008290" opacity="0.15"></circle>
+          <g transform="translate(188 128)">
+            <path d="M0 -30c-9 0-16 7-16 16 0 12 16 30 16 30s16-18 16-30c0-9-7-16-16-16z" fill="#008290" stroke="#ffffff" stroke-width="2"></path>
+            <circle cx="0" cy="-14" r="5" fill="#ffffff"></circle>
+          </g>
+        </svg>
+        <div class="acciones">
+          <button class="btn btn-secundario" id="btn-confirmar-pin" style="flex: 1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg>
+            <span id="texto-btn-pin">Confirmar pin</span></button>
+          <button class="btn btn-secundario" id="btn-mi-ubicacion">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><circle cx="12" cy="12" r="8"></circle><path d="M12 1v3M12 20v3M1 12h3M20 12h3"></path></svg>
+            Mi ubicación</button>
+        </div>
+      </div>
+      <div class="campo-grupo">
+        <label for="campo-direccion">Dirección o intersección (opcional)</label>
+        <input type="text" id="campo-direccion" placeholder="Ej.: Calle 465 y Calle 132 Bis">
+        <div class="ayuda" id="ayuda-direccion">Es solo una referencia; el pin es lo que vale.</div>
+      </div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" data-atras>Atrás</button>
+      <button class="btn btn-primario" id="btn-p3-continuar" disabled>Continuar</button>
+    </footer>
+  </section>
+
+  <!-- Paso 4: contacto -->
+  <section class="pantalla" id="p-paso4">
+    <header class="encabezado">
+      <div class="titulo">EcoVoz Urbana</div>
+      <button class="accion" data-cancelar>Cancelar</button>
+    </header>
+    <div class="paso-indicador">
+      <div class="fila"><span>Paso 4 de 4 · Contacto</span><span>100 %</span></div>
+      <div class="barra"><div style="width: 100%;"></div></div>
+    </div>
+    <main class="contenido">
+      <div class="campo-grupo">
+        <h1>¿Querés recibir novedades?</h1>
+        <p class="ayuda" style="margin: 0;">Dejar un contacto es opcional. No necesitás crear una cuenta.</p>
+      </div>
+      <div class="aviso aviso-info">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5fa9" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>
+        <span>Aunque no dejes contacto, el código de seguimiento se mostrará al finalizar.</span>
+      </div>
+      <div class="campo-grupo" role="radiogroup" aria-labelledby="rot-contacto">
+        <div class="rotulo" id="rot-contacto">Medio de contacto</div>
+        <button class="opcion" role="radio" aria-checked="false" data-medio="ninguno"><span class="punto"></span>Sin contacto</button>
+        <button class="opcion" role="radio" aria-checked="true" data-medio="correo"><span class="punto"></span>Correo electrónico</button>
+      </div>
+      <div class="campo-grupo" id="grupo-correo">
+        <label for="campo-correo">Correo electrónico</label>
+        <input type="email" id="campo-correo" autocomplete="email" placeholder="tu@correo.com">
+        <div class="mensaje-error oculto" id="error-correo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2574c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+          <span id="texto-error-correo">Revisá el correo electrónico.</span>
+        </div>
+        <label class="casilla"><input type="checkbox" id="campo-consentimiento">
+          <span>Autorizo el uso de este correo para recibir avisos sobre este caso.</span></label>
+      </div>
+      <div class="ayuda">Podés cambiar estas opciones antes de enviar.</div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" data-atras>Atrás</button>
+      <button class="btn btn-primario" id="btn-p4-continuar">Continuar</button>
+    </footer>
+  </section>
+
+  <!-- Revisión -->
+  <section class="pantalla" id="p-revision">
+    <header class="encabezado">
+      <div class="titulo">EcoVoz Urbana</div>
+      <button class="accion" data-cancelar>Cancelar</button>
+    </header>
+    <div class="paso-indicador">
+      <div class="fila"><span>Revisión final</span><span>100 %</span></div>
+      <div class="barra"><div style="width: 100%;"></div></div>
+    </div>
+    <main class="contenido" id="contenido-revision"></main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" data-atras>Atrás</button>
+      <button class="btn btn-primario" id="btn-enviar">Enviar observación</button>
+    </footer>
+  </section>
+
+  <!-- Cierre seguro por peligro inmediato -->
+  <section class="pantalla" id="p-cierre-seguro">
+    <header class="encabezado"><div class="titulo">EcoVoz Urbana</div></header>
+    <main class="contenido centrado">
+      <div class="circulo" style="background: var(--error-fondo);">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round"><path d="M12 3l10 18H2L12 3z"></path><path d="M12 10v4M12 18h.01"></path></svg>
+      </div>
+      <div>
+        <h1 class="grande">Si hay peligro inmediato, no sigas por acá</h1>
+        <p class="ayuda" style="font-size: 16px; margin: 10px 0 0;">EcoVoz no es un canal de emergencias. Comunicate ahora con el servicio que corresponda:</p>
+      </div>
+      <div style="width: 100%; display: flex; flex-direction: column; gap: 10px;">
+        <a class="btn btn-peligro" href="tel:911" style="width: 100%; justify-content: flex-start; gap: 12px; text-decoration: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg>
+          <span style="flex: 1; text-align: left;">Emergencias</span><strong>911</strong></a>
+        <a class="btn btn-peligro" href="tel:103" style="width: 100%; justify-content: flex-start; gap: 12px; text-decoration: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg>
+          <span style="flex: 1; text-align: left;">Defensa Civil</span><strong>103</strong></a>
+      </div>
+      <p class="ayuda">No se creó ninguna observación.</p>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" data-atras style="flex: 1;">Volver</button>
+    </footer>
+  </section>
+
+  <!-- Error de envío -->
+  <section class="pantalla" id="p-error-envio">
+    <header class="encabezado"><div class="titulo">EcoVoz Urbana</div></header>
+    <main class="contenido centrado">
+      <div class="circulo" style="background: var(--error-fondo);">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0120 0M5.5 12a10 10 0 0113 0M9 15.5a5 5 0 016 0"></path><path d="M12 19h.01"></path><path d="M3 3l18 18"></path></svg>
+      </div>
+      <div>
+        <h1 class="grande">No pudimos enviar tu observación</h1>
+        <p class="ayuda" style="font-size: 16px; margin: 10px 0 0;">Hubo un problema de conexión. Tus datos quedaron guardados en este teléfono.</p>
+        <p class="ayuda" style="font-size: 16px; margin: 6px 0 0;">La observación todavía no fue creada.</p>
+      </div>
+      <div class="aviso aviso-info" style="text-align: left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5fa9" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>
+        <span>No necesitás volver a completar los datos ni adjuntar la foto. Revisá tu conexión e intentá de nuevo.</span>
+      </div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" id="btn-volver-revisar">Volver a revisar</button>
+      <button class="btn btn-primario" id="btn-reintentar" style="flex: 1;">Reintentar</button>
+    </footer>
+  </section>
+
+  <!-- Recibida -->
+  <section class="pantalla" id="p-recibida">
+    <header class="encabezado"><div class="titulo">EcoVoz Urbana</div></header>
+    <main class="contenido centrado">
+      <div class="circulo" style="background: var(--exito-suave);">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#47700f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+        <h1 class="grande">Observación recibida</h1>
+        <span class="badge badge-recibida">Estado: Recibida</span>
+        <p class="ayuda" style="font-size: 16px; margin: 0;">Registramos tu observación correctamente.</p>
+      </div>
+      <div class="panel-codigo" style="width: 100%;">
+        <div class="rotulo">Código de seguimiento</div>
+        <div class="codigo" id="texto-cus">···-···</div>
+        <button class="btn btn-secundario" id="btn-copiar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a1 1 0 011-1h10"></path></svg>
+          <span id="texto-btn-copiar">Copiar código</span></button>
+      </div>
+      <div class="ayuda" style="display: flex; flex-direction: column; gap: 8px;">
+        <span>Guardá este código para consultar el estado de tu observación.</span>
+        <span id="nota-correo-cus" class="oculto">También lo enviamos a <strong id="texto-correo-cus" style="color: var(--texto);"></strong>.</span>
+      </div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-primario" id="btn-volver-inicio" style="flex: 1;">Volver al inicio</button>
+    </footer>
+  </section>
+
+  <!-- Modo prueba -->
+  <section class="pantalla" id="p-modo-prueba">
+    <header class="encabezado" style="background: #374151;">
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <button class="volver" data-inicio aria-label="Volver al inicio">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+        </button>
+        <div class="titulo">Modo prueba</div>
+      </div>
+    </header>
+    <main class="contenido">
+      <div class="aviso" style="background: var(--sup-2);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>
+        <span>Esta pantalla existe solo en el prototipo. Sirve para provocar la falla de conexión y acelerar la gestión simulada.</span>
+      </div>
+      <div class="fila-espaciada" style="min-height: 56px; border-bottom: 1px solid var(--deshabilitado-fondo); padding: 8px 0;">
+        <div>
+          <div style="font-weight: 500;">Sin conexión</div>
+          <div class="ayuda">El próximo envío falla. Se desactiva sola al reintentar.</div>
+        </div>
+        <label class="casilla" style="min-height: auto;"><input type="checkbox" id="campo-sin-conexion"><span class="solo-lectores">Sin conexión</span></label>
+      </div>
+      <div class="fila-espaciada" style="min-height: 56px; border-bottom: 1px solid var(--deshabilitado-fondo); padding: 8px 0;">
+        <div>
+          <div style="font-weight: 500;">Velocidad del simulador</div>
+          <div class="ayuda">Tiempo entre cambios de estado.</div>
+        </div>
+        <div style="display: flex; border: 1px solid var(--borde); border-radius: 8px; overflow: hidden;">
+          <button class="btn" data-velocidad="30000" id="btn-vel-30" style="border-radius: 0; min-height: 44px; font-size: 14px;">30 s</button>
+          <button class="btn" data-velocidad="5000" id="btn-vel-5" style="border-radius: 0; min-height: 44px; font-size: 14px;">5 s</button>
+        </div>
+      </div>
+      <div class="fila-espaciada" style="min-height: 56px; padding: 8px 0;">
+        <div>
+          <div style="font-weight: 500;">Datos guardados</div>
+          <div class="ayuda" id="texto-datos-guardados">Sin datos.</div>
+        </div>
+        <button class="btn btn-peligro" id="btn-borrar-todo" style="min-height: 44px; font-size: 14px;">Borrar todo</button>
+      </div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-secundario" data-inicio style="flex: 1;">Volver al inicio</button>
+    </footer>
+  </section>
+
+  <!-- Mis observaciones -->
+  <section class="pantalla" id="p-mis-observaciones" data-fondo="gris">
+    <header class="encabezado">
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <button class="volver" data-inicio aria-label="Volver al inicio">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+        </button>
+        <div class="titulo">Mis observaciones</div>
+      </div>
+    </header>
+    <main class="contenido">
+      <p class="ayuda" style="margin: 0;">Las que reportaste desde este teléfono.</p>
+      <div id="lista-observaciones" style="display: flex; flex-direction: column; gap: 16px;"></div>
+    </main>
+    <footer class="barra-acciones">
+      <button class="btn btn-primario" id="btn-reportar-desde-lista" style="flex: 1;">Reportar una observación</button>
+    </footer>
+  </section>
+
+  <!-- Consulta por código -->
+  <section class="pantalla" id="p-consulta">
+    <header class="encabezado">
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <button class="volver" data-inicio aria-label="Volver al inicio">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+        </button>
+        <div class="titulo">Consultar por código</div>
+      </div>
+    </header>
+    <main class="contenido">
+      <div style="display: flex; gap: 10px;">
+        <input type="text" id="campo-cus" placeholder="Ej.: K7M-4QZ" autocapitalize="characters" autocomplete="off"
+               style="flex: 1; font-size: 18px; font-weight: 500; letter-spacing: 0.08em;" aria-label="Código de seguimiento">
+        <button class="btn btn-primario" id="btn-buscar" style="padding: 0 18px;">Buscar</button>
+      </div>
+      <div class="mensaje-error oculto" id="error-consulta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2574c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        <span>No encontramos una observación con ese código. Revisalo e intentá de nuevo.</span>
+      </div>
+      <div id="resultado-consulta"></div>
+      <p class="ayuda" style="margin-top: auto;">La consulta muestra el estado, las fechas y las respuestas. No muestra la descripción ni tus datos de contacto.</p>
+    </main>
+  </section>
+
+</div>
+
+<!-- Diálogo de cancelación -->
+<dialog id="dialogo-cancelar">
+  <div class="dialogo-cuerpo">
+    <div class="t">¿Descartar este reporte?</div>
+    <div style="color: var(--texto-2); line-height: 1.4;">Se van a perder los datos que cargaste. No se guarda nada.</div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button class="btn btn-primario" id="btn-seguir-cargando">Seguir cargando</button>
+      <button class="btn btn-peligro" id="btn-descartar">Descartar</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Galería simulada -->
+<dialog id="dialogo-galeria">
+  <div class="dialogo-cuerpo">
+    <div class="t">Galería</div>
+    <div style="color: var(--texto-2); line-height: 1.4;">Galería simulada del prototipo: hay una sola fotografía.</div>
+    <button id="btn-elegir-evidencia" style="border: 1px solid var(--borde); border-radius: 12px; padding: 0; overflow: hidden; cursor: pointer; background: none;">
+      <img src="datos/evidencia.jpg" alt="Microbasural en la esquina de Calle 465 y Calle 132 Bis" style="width: 100%; display: block;">
+    </button>
+    <button class="btn btn-secundario" id="btn-cerrar-galeria">Cerrar</button>
+  </div>
+</dialog>
+
+<script src="datos/catalogo.js"></script>
+<script src="datos/area.js"></script>
+<script src="datos/direcciones.js"></script>
+<script src="js/exif.js"></script>
+<script src="js/almacen.js"></script>
+<script src="js/sistema.js"></script>
+<script src="js/pantallas.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* Tokens del sistema de diseño de EcoVoz Urbana (Etapa 4, sección 4.2).
+   Mismos valores que el lienzo de Claude Design. Paleta institucional
+   del sitio de la Municipalidad de La Plata adaptada a WCAG 2.2 AA. */
+:root {
+  /* Color */
+  --primario: #008290;         /* blanco encima: 4,57:1 */
+  --primario-oscuro: #027c87;  /* presionado y foco: 4,96:1 */
+  --acento: #fbcd21;           /* solo fondo, texto oscuro: 11,7:1 */
+  --exito-fondo: #9ec83d;      /* texto oscuro encima: 9,1:1 */
+  --exito-suave: #f1f8e6;
+  --exito-texto: #47700f;      /* sobre blanco: 5,9:1 */
+  --error-fondo: #fdecea;
+  --error-texto: #c0392b;      /* sobre blanco: 5,4:1 */
+  --error-icono: #e2574c;
+  --info: #4b5fa9;             /* sobre blanco: 6,0:1 */
+  --info-suave: #eef0f8;
+  --texto: #111827;
+  --texto-2: #4b5563;          /* sobre blanco: 7,6:1 */
+  --deshabilitado-fondo: #e5e7eb;
+  --deshabilitado-texto: #6b7280;
+  --sup-0: #ffffff;
+  --sup-1: #f9fafb;
+  --sup-2: #f3f4f6;
+  --borde: #d1d5db;
+
+  /* Tipografía */
+  --fuente: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --t-titulo: 28px;
+  --t-seccion: 22px;
+  --t-sub: 18px;
+  --t-cuerpo: 16px;
+  --t-ayuda: 14px;
+  --t-rotulo: 12px;
+
+  /* Forma y espacio: grilla de 8 px */
+  --radio-control: 8px;
+  --radio-tarjeta: 12px;
+  --alto-control: 48px;
+  --objetivo-min: 44px;
+  --sombra-barra: 0 -4px 12px rgba(17, 24, 39, 0.06);
+  --foco: 0 0 0 2px var(--sup-0), 0 0 0 4px var(--primario-oscuro);
+}

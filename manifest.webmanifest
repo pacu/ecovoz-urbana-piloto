@@ -1,0 +1,10 @@
+{
+  "name": "EcoVoz Urbana",
+  "short_name": "EcoVoz",
+  "description": "Prototipo académico: observaciones ambientales de City Bell. Datos ficticios.",
+  "lang": "es-AR",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#008290"
+}
