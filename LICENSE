@@ -1,47 +1,30 @@
-Licencia y aviso de ausencia de garantías
-==========================================
+BSD 3-Clause License
 
-Salvo que se indique lo contrario, el contenido completo de este
-repositorio, incluido su código, se publica bajo la licencia Creative
-Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0).
+Copyright (c) 2026, Laura Lopresti, Samuel Kowalczuk, Gerardo Breard,
+Alejandro Luna, Carolina Covas and Francisco Gindre
+All rights reserved.
 
-Titular y atribución solicitada:
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
 
-Grupo C, Taller de Diseño de Aplicaciones, Maestría en Transformación
-Digital, UNNOBA y UNLP, 2026.
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
 
-Resumen de la licencia:
-https://creativecommons.org/licenses/by-nc/4.0/deed.es
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
 
-Texto legal:
-https://creativecommons.org/licenses/by-nc/4.0/legalcode.es
+3. Neither the name of the copyright holder nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
 
-Aviso de ausencia de garantías
-------------------------------
-
-En la máxima medida permitida por la ley aplicable, este material se
-ofrece «tal cual» y «según disponibilidad», sin garantías ni
-condiciones de ningún tipo, expresas, implícitas o legales. No se
-garantizan su exactitud, disponibilidad, adecuación para un propósito
-determinado, funcionamiento ininterrumpido ni ausencia de errores.
-
-Los autores no serán responsables por daños, pérdidas, costos o
-reclamos derivados del uso o de la imposibilidad de uso del material,
-en los términos y con los límites previstos por la licencia aplicable.
-
-Aviso académico y de no vinculación institucional
--------------------------------------------------
-
-EcoVoz Urbana es un trabajo práctico académico. No es una aplicación
-oficial ni tiene vinculación institucional, contractual, técnica u
-operativa con la Municipalidad de La Plata, sus dependencias o sus
-autoridades. El municipio no encargó, financió, validó, aprobó ni
-patrocinó este prototipo.
-
-El caso, los reportes, las personas, los estados, las respuestas y las
-actuaciones representadas son ficticios y se utilizan únicamente con
-fines académicos y de demostración. Las fotografías son recursos
-visuales de prueba y no deben interpretarse como evidencia de una
-actuación municipal real. Esta aplicación no debe utilizarse para
-efectuar reportes reales ni para solicitar asistencia ante una
-emergencia.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

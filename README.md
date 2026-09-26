@@ -76,17 +76,25 @@ Las fotografías incluidas en este repositorio no conservan metadatos
 EXIF ni coordenadas GPS. La ubicación del caso de prueba se obtiene de
 los datos embebidos en la aplicación.
 
-## Licencia y ausencia de garantías
+## Licencias y ausencia de garantías
 
-Salvo que se indique lo contrario, el contenido completo de este
-repositorio, incluido su código, se publica bajo la licencia
-[Creative Commons Atribución-NoComercial 4.0 Internacional][cc-by-nc].
-La atribución debe identificar al Grupo C, Taller de Diseño de
-Aplicaciones, Maestría en Transformación Digital, UNNOBA y UNLP, 2026.
+El software de este repositorio se publica bajo la licencia
+[BSD 3-Clause](LICENSE). Esto comprende `index.html`, los archivos de
+`css/`, `js/` y `pruebas/`, `manifest.webmanifest` y los archivos de
+datos ejecutables. La licencia permite utilizar, modificar y redistribuir
+el código, incluso con fines comerciales, siempre que se conserven sus
+avisos. No permite usar los nombres de los autores para promocionar o
+avalar productos derivados sin autorización previa.
 
-El material se ofrece «tal cual», sin garantías de ningún tipo. No se
+La documentación, los textos explicativos y las fotografías se publican
+bajo la licencia [Creative Commons Atribución-NoComercial 4.0
+Internacional](LICENSE-CONTENIDOS.md), salvo que se indique lo contrario.
+Esto comprende el `README` y los archivos de imagen de `datos/`.
+
+La atribución debe identificar a Laura Lopresti, Samuel Kowalczuk,
+Gerardo Breard, Alejandro Luna, Carolina Covas y Francisco Gindre,
+integrantes del Grupo C del Taller de Diseño de Aplicaciones, Maestría
+en Transformación Digital, UNNOBA y UNLP, 2026. El software y los
+contenidos se ofrecen «tal cual», sin garantías de ningún tipo. No se
 garantizan su exactitud, disponibilidad, adecuación para un propósito
-determinado ni ausencia de errores. Véase el archivo [LICENSE](LICENSE)
-para conocer el alcance del aviso y el texto legal aplicable.
-
-[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/deed.es
+determinado ni ausencia de errores.
